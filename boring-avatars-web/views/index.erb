@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Boring Avatars</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>アイコン画像作成</h1>
+    <form action="/identicon" method="post">
+      <div>
+        <label for="name">名前</label>
+        <input type="text" value="<%= params[:name] %>" name="name" id="name">
+      </div>
+      <div>
+        <input type="submit" value="アイコン画像作成">
+      </div>
+    </form>
+    <% if @identicon %>
+      <%= @identicon %>
+    <% end %>
+  </body>
+</html>

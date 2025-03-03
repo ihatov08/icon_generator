@@ -1,0 +1,21 @@
+services:
+  web:
+    image: boring-avatars-web:latest
+    volumes:
+      - ./boring-avatars-web:/app
+    ports:
+      - "4567:4567"
+    environment:
+      - AVATAR_SERVICE_HOST=icon-generator
+      - AVATAR_SERVICE_PORT=3000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  icon-generator:
+    image: boring-avatars-services:latest
+    build: ./boring-avatars-services
+    ports:
+     - "3000:3000"
+  redis:
+    image: redis:7.4.2
+    ports:
+     - "6379:6379"
